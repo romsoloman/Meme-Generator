@@ -10,14 +10,14 @@
     <title>Meme Generator</title>
 </head>
 
-<body>
+<body onload="init()">
     <div class="grid-site-container">
         <header class="main-header">
             <div class="header-container">
                 <div class="logo">LOGO</div>
                 <nav class="main-nav">
                     <ul class="nav-links">
-                        <li class="link"><a href="#">Gallery</a></li>
+                        <li class="link"><a href="#" onclick="openGallery()">Gallery</a></li>
                         <li class="link"><a href="#">Memes</a></li>
                         <li class="link"><a href="#">About</a></li>
                     </ul>
@@ -38,7 +38,7 @@
                 </div>
             </header>
             <section class="gallery-container">
-                <img src="img/1.jpg" onclick="onImgClicked(this)">
+                <!-- <img src="img/1.jpg" onclick="onImgClicked(this)"> -->
             </section>
         </main>
         <section class="meme-editor-container">
