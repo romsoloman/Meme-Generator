@@ -45,22 +45,24 @@
                 <canvas id="my-canvas" height="450" width="400"></canvas>
             </div>
             <div class="editor-container">
-                <input type="text" name="text-editor" placeholder="Text Line" onkeyup="handleText(event)">
+                <input type="text" name="text-editor" class="text-editor" placeholder="Text Line"
+                    onkeyup="handleText(event)">
                 <div class="control-box">
                     <button class="line-up">↑</button>
                     <button class="line-down">↓</button>
                     <button class="add-line">+</button>
-                    <button class="delete-line">X</button>
-                    <button class="font-size-up">A+</button>
-                    <button class="font-size-down">A-</button>
-                    <button class="text-align-left">left</button>
-                    <button class="text-align-center">center</button>
-                    <button class="text-align-right">right</button>
-                    <select name="fonts">
+                    <button class="delete-line" onclick="onDeleteLine()">X</button>
+                    <button class="font-size-up" name="up" onclick="onChangeFontSize(this.name)">A+</button>
+                    <button class="font-size-down" name="down" onclick="onChangeFontSize(this.name)">A-</button>
+                    <button class="text-align-left" name="left" onclick="onChangeAlign(this.name)">left</button>
+                    <button class="text-align-center" name="center" onclick="onChangeAlign(this.name)">center</button>
+                    <button class="text-align-right" name="right" onclick="onChangeAlign(this.name)">right</button>
+                    <select name="fonts" onchange="onSetFont(this.value)">
                         <option value="impact">Impact</option>
                         <option value="ariel">Ariel</option>
                     </select>
-                    <input type="color" name="font-color">
+                    <input type="color" name="font-color" class="font-color" value="#000000"
+                        onblur="onChangeFontColor(this.value)">
                 </div>
             </div>
         </section>

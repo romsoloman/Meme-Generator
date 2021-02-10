@@ -37,22 +37,23 @@ const getCurrImgById = imgId => {
     })
 }
 
-const drawText = (text) => {
+const drawText = (text, x = 200, y = 50) => {
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'red'
-    gCtx.fillStyle = 'white'
-    gCtx.font = '40px Arial'
-    gCtx.textAlign = 'center'
-    gCtx.fillText(text, 200, 50)
-    gCtx.strokeText(text, 200, 50)
+    gCtx.strokeStyle = 'black'
+    gCtx.fillStyle = gCurrMeme.lines[gCurrMeme.selectedLineIdx].color
+    gCtx.font = `${gCurrMeme.lines[gCurrMeme.selectedLineIdx].size}px ${gCurrMeme.lines[gCurrMeme.selectedLineIdx].font}`
+    gCtx.textAlign = gCurrMeme.lines[gCurrMeme.selectedLineIdx].align;
+    gCtx.fillText(text, x, y)
+    gCtx.strokeText(text, x, y)
 }
 
-const updateCurrMeme = (imgId, lineIdx, txt, size = 16, align = 'center', color = 'white') => {
+const updateCurrMeme = (imgId, lineIdx = 0, txt, size = 36, font = 'Impact', align = 'center', color = 'white') => {
     gCurrMeme = {
-        selectedImgId: imgId, selectedLineIdx: lineIdx, lines: [{ txt, size, align, color }]
+        selectedImgId: imgId, selectedLineIdx: lineIdx, lines: [{ txt, size, font, align, color }]
     }
 }
 
-const upadteMemeTxt = txt => {
-    drawText(txt)
+
+const deleteSelectedLine = () => {
+    updateCurrMeme(gCurrMeme.selectedImgId)
 }

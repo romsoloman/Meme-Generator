@@ -11,7 +11,7 @@ const init = () => {
 const onImgClicked = imgId => {
     openEditor();
     renderImg(imgId);
-    updateCurrMeme(imgId, 0, null);
+    updateCurrMeme(imgId, 0);
 }
 
 const openEditor = () => {
@@ -54,8 +54,61 @@ const renderImg = (imgId, txt = '') => {
 
 
 const handleText = ev => {
+    if (ev.keyCode === 13) return ev.target.value = '';
     let currMeme = getCurrMeme();
-    updateCurrMeme(currMeme.selectedImgId, 0, ev.target.value);
+    currMeme.lines[currMeme.selectedLineIdx].txt = ev.target.value
     currMeme = getCurrMeme();
-    renderImg(currMeme.selectedImgId, currMeme.lines[0].txt)
+    renderImg(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt)
+}
+
+
+const onChangeFontSize = (direction) => {
+    let currMeme = getCurrMeme();
+    if (direction === 'up') {
+        currMeme.lines[currMeme.selectedLineIdx].size += 5;
+    } else {
+        currMeme.lines[currMeme.selectedLineIdx].size -= 5;
+    }
+    renderImg(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt)
+}
+
+const onChangeAlign = align => {
+    let currMeme = getCurrMeme();
+    if (align === 'left') currMeme.lines[currMeme.selectedLineIdx].align = 'right';
+    else if (align === 'center') currMeme.lines[currMeme.selectedLineIdx].align = 'center';
+    else if (align === 'right') currMeme.lines[currMeme.selectedLineIdx].align = 'left';
+
+    renderImg(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt);
+}
+
+const onSetFont = font => {
+    let currMeme = getCurrMeme();
+    if (font === 'impact') {
+        currMeme.lines[currMeme.selectedLineIdx].font = font;
+    }
+    else {
+        currMeme.lines[currMeme.selectedLineIdx].font = font;
+    }
+    renderImg(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt);
+}
+
+const onChangeFontColor = fontColor => {
+    let currMeme = getCurrMeme();
+    currMeme.lines[currMeme.selectedLineIdx].color = fontColor;
+    renderImg(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt);
+}
+
+const onDeleteLine = () => {
+    let currMeme = getCurrMeme();
+    deleteSelectedLine(currMeme.selectedLineIdx);
+    currMeme = getCurrMeme();
+    resetInputs();
+    renderImg(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt);
+}
+
+const resetInputs = () => {
+    const elText = document.querySelector('.text-editor');
+    elText.value = '';
+    const elFontColor = document.querySelector('.font-color');
+    elFontColor.value = '#000000';
 }
