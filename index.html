@@ -48,9 +48,9 @@
                 <input type="text" name="text-editor" class="text-editor" placeholder="Text Line"
                     onkeyup="handleText(event)">
                 <div class="control-box">
-                    <button class="line-up">↑</button>
-                    <button class="line-down">↓</button>
-                    <button class="add-line">+</button>
+                    <button class="line-up" name="up" onclick="onSwitchLine(this.name)">↑</button>
+                    <button class="line-down" name="down" onclick="onSwitchLine(this.name)">↓</button>
+                    <button class="add-line" onclick="onAddLine()">+</button>
                     <button class="delete-line" onclick="onDeleteLine()">X</button>
                     <button class="font-size-up" name="up" onclick="onChangeFontSize(this.name)">A+</button>
                     <button class="font-size-down" name="down" onclick="onChangeFontSize(this.name)">A-</button>

@@ -37,23 +37,44 @@ const getCurrImgById = imgId => {
     })
 }
 
-const drawText = (text, x = 200, y = 50) => {
+const drawText = (text = '', x = 200, y = 50, size, color, font, align) => {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = gCurrMeme.lines[gCurrMeme.selectedLineIdx].color
-    gCtx.font = `${gCurrMeme.lines[gCurrMeme.selectedLineIdx].size}px ${gCurrMeme.lines[gCurrMeme.selectedLineIdx].font}`
-    gCtx.textAlign = gCurrMeme.lines[gCurrMeme.selectedLineIdx].align;
+    gCtx.fillStyle = color
+    gCtx.font = `${size}px ${font}`
+    gCtx.textAlign = align;
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
 }
 
-const updateCurrMeme = (imgId, lineIdx = 0, txt, size = 36, font = 'Impact', align = 'center', color = 'white') => {
+const updateCurrMeme = (imgId, lineIdx = 1, txt, size = 36, font = 'Impact', align = 'center', color = 'white') => {
     gCurrMeme = {
-        selectedImgId: imgId, selectedLineIdx: lineIdx, lines: [{ txt, size, font, align, color }]
+        selectedImgId: imgId, selectedLineIdx: lineIdx, lines: [{ txt, size, font, align, color, x: 200, y: 50 }, { txt, size, font, align, color, x: 200, y: 400 }]
     }
 }
 
 
 const deleteSelectedLine = () => {
     updateCurrMeme(gCurrMeme.selectedImgId)
+}
+
+
+const switchLine = direction => {
+    if (direction === 'up') {
+        if (gCurrMeme.selectedLineIdx === 0) return;
+        gCurrMeme.selectedLineIdx--;
+        console.log('gCurrMeme.selectedLineIdx', gCurrMeme.selectedLineIdx);
+    }
+    else {
+        if (gCurrMeme.selectedLineIdx === gCurrMeme.lines.length) return;
+        gCurrMeme.selectedLineIdx++
+        console.log('gCurrMeme.selectedLineIdx', gCurrMeme.selectedLineIdx);
+    }
+}
+
+const addLine = (txt, size = 36, font = 'Impact', align = 'center', color = 'white') => {
+    gCurrMeme.lines.push({
+        txt, size, font, align, color, x: 200, y: 50 * gCurrMeme.lines.length
+    })
+    gCurrMeme.selectedLineIdx = gCurrMeme.lines.length - 1;
 }

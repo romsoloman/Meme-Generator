@@ -42,13 +42,16 @@ const renderCanvas = () => {
     gCtx = gElCanvas.getContext('2d');
 }
 
-const renderImg = (imgId, txt = '') => {
+const renderImg = (imgId) => {
     const currImage = getCurrImgById(imgId);
     const img = new Image();
     img.src = currImage.url;
     img.onload = () => {
+        var currMeme = getCurrMeme();
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        drawText(txt)
+        currMeme.lines.forEach(line => {
+            drawText(line.txt, line.x, line.y, line.size, line.color, line.font, line.align);
+        });
     }
 }
 
@@ -58,7 +61,7 @@ const handleText = ev => {
     let currMeme = getCurrMeme();
     currMeme.lines[currMeme.selectedLineIdx].txt = ev.target.value
     currMeme = getCurrMeme();
-    renderImg(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt)
+    renderImg(currMeme.selectedImgId)
 }
 
 
@@ -69,7 +72,7 @@ const onChangeFontSize = (direction) => {
     } else {
         currMeme.lines[currMeme.selectedLineIdx].size -= 5;
     }
-    renderImg(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt)
+    renderImg(currMeme.selectedImgId)
 }
 
 const onChangeAlign = align => {
@@ -78,7 +81,7 @@ const onChangeAlign = align => {
     else if (align === 'center') currMeme.lines[currMeme.selectedLineIdx].align = 'center';
     else if (align === 'right') currMeme.lines[currMeme.selectedLineIdx].align = 'left';
 
-    renderImg(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt);
+    renderImg(currMeme.selectedImgId);
 }
 
 const onSetFont = font => {
@@ -89,13 +92,13 @@ const onSetFont = font => {
     else {
         currMeme.lines[currMeme.selectedLineIdx].font = font;
     }
-    renderImg(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt);
+    renderImg(currMeme.selectedImgId);
 }
 
 const onChangeFontColor = fontColor => {
     let currMeme = getCurrMeme();
     currMeme.lines[currMeme.selectedLineIdx].color = fontColor;
-    renderImg(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt);
+    renderImg(currMeme.selectedImgId);
 }
 
 const onDeleteLine = () => {
@@ -103,7 +106,7 @@ const onDeleteLine = () => {
     deleteSelectedLine(currMeme.selectedLineIdx);
     currMeme = getCurrMeme();
     resetInputs();
-    renderImg(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt);
+    renderImg(currMeme.selectedImgId);
 }
 
 const resetInputs = () => {
@@ -112,3 +115,12 @@ const resetInputs = () => {
     const elFontColor = document.querySelector('.font-color');
     elFontColor.value = '#000000';
 }
+
+const onSwitchLine = direction => {
+    switchLine(direction);
+}
+
+const onAddLine = () => {
+    addLine();
+    resetInputs();
+} 
