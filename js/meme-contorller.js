@@ -1,12 +1,16 @@
 'use strict'
 
+let gElCanvas;
+let gCtx;
 
 const init = () => {
     renderGallery();
+    renderCanvas();
 }
 
-const onImgClicked = elImg => {
+const onImgClicked = imgId => {
     openEditor();
+    renderImg(imgId);
 }
 
 const openEditor = () => {
@@ -26,8 +30,22 @@ const openGallery = () => {
 const renderGallery = () => {
     const imgs = getImgs();
     const strHTMLs = imgs.map(img => {
-        return `<img src="img/${img.id}.jpg" onclick="onImgClicked(this)">`
+        return `<img src="img/${img.id}.jpg" onclick="onImgClicked(${img.id})">`
     }).join(' ');
     const elGallery = document.querySelector('.gallery-container');
     elGallery.innerHTML = strHTMLs;
+}
+
+const renderCanvas = () => {
+    gElCanvas = document.getElementById('my-canvas')
+    gCtx = gElCanvas.getContext('2d');
+}
+
+const renderImg = imgId => {
+    const currImage = getCurrImg(imgId);
+    const img = new Image();
+    img.src = currImage.url;
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+    }
 }

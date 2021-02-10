@@ -26,3 +26,9 @@ const gImgs = [
 const getImgs = () => {
     return gImgs;
 }
+
+const getCurrImg = imgId => {
+    return gImgs.find(img => {
+        return img.id === imgId;
+    })
+}
