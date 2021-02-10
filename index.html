@@ -38,23 +38,17 @@
                 </div>
             </header>
             <section class="gallery-container">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
-                <img src="img/1.jpg">
+                <img src="img/1.jpg" onclick="onImgClicked(this)">
             </section>
         </main>
+        <section class="meme-editor-container">
+            <div class="canvas-container">
+                <canvas id="my-canvas" height="450" width="400"></canvas>
+            </div>
+            <div class="editor-container">
+                <input type="text" name="text-editor" placeholder="Text Line">
+            </div>
+        </section>
         <!-- <footer class="main-footer">
             <div class="footer-container">
                 <div class="footer-logo">Blogin.</div>

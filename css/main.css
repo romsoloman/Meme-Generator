@@ -33,6 +33,19 @@ body{
     grid-row: 2/2;
     border-right: 1px solid black;
     border-left: 1px solid black;
+    /* display: none; */
+}
+
+.meme-editor-container{
+    background-color: lightgray;
+    min-width: 860px;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    padding: 20px 0;
+    display: none;
 }
 
 .main-footer{
@@ -93,4 +106,16 @@ body{
 
 .gallery-container img {
     width: 100%;
+    cursor: pointer;
 }
+
+/* ---CANVAS--- */
+
+#my-canvas{
+    background-color: rgb(224, 224, 224);
+}
+
+.editor-container{
+    background-color: royalblue;
+}
+
