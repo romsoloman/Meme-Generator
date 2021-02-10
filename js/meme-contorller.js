@@ -11,6 +11,7 @@ const init = () => {
 const onImgClicked = imgId => {
     openEditor();
     renderImg(imgId);
+    updateCurrMeme(imgId, 0, null);
 }
 
 const openEditor = () => {
@@ -41,11 +42,20 @@ const renderCanvas = () => {
     gCtx = gElCanvas.getContext('2d');
 }
 
-const renderImg = imgId => {
-    const currImage = getCurrImg(imgId);
+const renderImg = (imgId, txt = '') => {
+    const currImage = getCurrImgById(imgId);
     const img = new Image();
     img.src = currImage.url;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+        drawText(txt)
     }
+}
+
+
+const handleText = ev => {
+    let currMeme = getCurrMeme();
+    updateCurrMeme(currMeme.selectedImgId, 0, ev.target.value);
+    currMeme = getCurrMeme();
+    renderImg(currMeme.selectedImgId, currMeme.lines[0].txt)
 }

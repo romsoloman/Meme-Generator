@@ -1,6 +1,5 @@
 'use strict'
 
-
 const gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: ['trump'] },
     { id: 2, url: 'img/2.jpg', keywords: ['trump'] },
@@ -22,13 +21,38 @@ const gImgs = [
     { id: 18, url: 'img/18.jpg', keywords: ['trump'] },
 ];
 
+var gCurrMeme;
+
+const getCurrMeme = () => {
+    return gCurrMeme;
+}
 
 const getImgs = () => {
     return gImgs;
 }
 
-const getCurrImg = imgId => {
+const getCurrImgById = imgId => {
     return gImgs.find(img => {
         return img.id === imgId;
     })
+}
+
+const drawText = (text) => {
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = 'red'
+    gCtx.fillStyle = 'white'
+    gCtx.font = '40px Arial'
+    gCtx.textAlign = 'center'
+    gCtx.fillText(text, 200, 50)
+    gCtx.strokeText(text, 200, 50)
+}
+
+const updateCurrMeme = (imgId, lineIdx, txt, size = 16, align = 'center', color = 'white') => {
+    gCurrMeme = {
+        selectedImgId: imgId, selectedLineIdx: lineIdx, lines: [{ txt, size, align, color }]
+    }
+}
+
+const upadteMemeTxt = txt => {
+    drawText(txt)
 }

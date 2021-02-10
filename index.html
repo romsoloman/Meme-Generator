@@ -38,7 +38,6 @@
                 </div>
             </header>
             <section class="gallery-container">
-                <!-- <img src="img/1.jpg" onclick="onImgClicked(this)"> -->
             </section>
         </main>
         <section class="meme-editor-container">
@@ -46,7 +45,23 @@
                 <canvas id="my-canvas" height="450" width="400"></canvas>
             </div>
             <div class="editor-container">
-                <input type="text" name="text-editor" placeholder="Text Line">
+                <input type="text" name="text-editor" placeholder="Text Line" onkeyup="handleText(event)">
+                <div class="control-box">
+                    <button class="line-up">↑</button>
+                    <button class="line-down">↓</button>
+                    <button class="add-line">+</button>
+                    <button class="delete-line">X</button>
+                    <button class="font-size-up">A+</button>
+                    <button class="font-size-down">A-</button>
+                    <button class="text-align-left">left</button>
+                    <button class="text-align-center">center</button>
+                    <button class="text-align-right">right</button>
+                    <select name="fonts">
+                        <option value="impact">Impact</option>
+                        <option value="ariel">Ariel</option>
+                    </select>
+                    <input type="color" name="font-color">
+                </div>
             </div>
         </section>
         <!-- <footer class="main-footer">
