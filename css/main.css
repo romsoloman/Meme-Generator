@@ -391,4 +391,13 @@ body{
         transform: translateX(100%);
         transition: transform .8s, box-shadow .8s;
        }
+       .meme-editor-container{
+        justify-content: center;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+       }
+       .editor-container{
+        width: 100%;
+        margin-top: 1rem;
+       }
  }
