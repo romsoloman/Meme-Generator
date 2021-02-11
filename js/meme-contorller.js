@@ -4,7 +4,7 @@ let gElCanvas;
 let gCtx;
 
 const init = () => {
-    renderGallery();
+    renderGallery(false);
     renderCanvas();
 }
 
@@ -17,7 +17,9 @@ const onImgClicked = imgId => {
 const openEditor = () => {
     const elMainContent = document.querySelector('.main-content');
     const elEditor = document.querySelector('.meme-editor-container');
+    const elMemesGallery = document.querySelector('.saved-memes-gallery');
     elMainContent.style.display = 'none';
+    elMemesGallery.style.display = 'none';
     elEditor.style.display = 'grid';
 }
 
@@ -28,8 +30,8 @@ const openGallery = () => {
     elMainContent.style.display = 'grid';
 }
 
-const renderGallery = () => {
-    const imgs = getImgs();
+const renderGallery = bool => {
+    const imgs = getImgs(bool);
     const strHTMLs = imgs.map(img => {
         return `<img src="img/${img.id}.jpg" onclick="onImgClicked(${img.id})">`
     }).join(' ');
@@ -125,4 +127,33 @@ const onSwitchLine = direction => {
 const onAddLine = () => {
     addLine();
     resetInputs();
-} 
+}
+
+const onSaveMeme = () => {
+    saveMeme();
+}
+
+const onFilterImgs = (ev) => {
+    gFilteredImgs = filterImgs(ev.target.value)
+    renderGallery(true)
+}
+
+// const openSavedMemes = () => {
+//     const elMainContent = document.querySelector('.main-content');
+//     const elMemesGallery = document.querySelector('.saved-memes-gallery');
+//     const elEditor = document.querySelector('.meme-editor-container');
+//     elMemesGallery.style.display = 'grid';
+//     elMainContent.style.display = 'none'
+//     elEditor.style.display = 'none';
+//      renderMemes()
+// }
+
+// const renderMemes = () => {
+//     const memes = getSavedMemes();
+//     console.log('memes', memes);
+//     const strHTMLs = memes.map(img => {
+//         return `<img src="img/${img.id}.jpg">`
+//     }).join(' ');
+//     const elMemesGallery = document.querySelector('.saved-memes-gallery');
+//     elMemesGallery.innerHTML = strHTMLs;
+// }

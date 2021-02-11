@@ -18,7 +18,7 @@
                 <nav class="main-nav">
                     <ul class="nav-links">
                         <li class="link"><a href="#" onclick="openGallery()">Gallery</a></li>
-                        <li class="link"><a href="#">Memes</a></li>
+                        <li class="link"><a href="#" onclick="openSavedMemes()">Memes</a></li>
                         <li class="link"><a href="#">About</a></li>
                     </ul>
                 </nav>
@@ -27,7 +27,7 @@
         <main class="main-content">
             <header class="search-header">
                 <div class="search-input">
-                    <input type="list" placeholder="SEARCH" name="search-input">
+                    <input type="list" placeholder="SEARCH" name="search-input" onkeyup="onFilterImgs(event)">
                 </div>
                 <div class="search-keywords">
                     <span>fuuny</span>
@@ -64,12 +64,15 @@
                     <input type="color" name="font-color" class="font-color" value="#000000"
                         onblur="onChangeFontColor(this.value)">
                 </div>
-            </div>
-            <div class="share-container">
-                <button class="save-btn">Save Meme</button>
-                <button class="share-btn">Share Meme </button>
+                <div class="share-container">
+                    <button class="save-btn" onclick="onSaveMeme()">Save Meme</button>
+                    <button class="share-btn">Share Meme </button>
+                </div>
             </div>
         </section>
+        <!-- <section class="saved-memes-gallery">
+            <img src="img/1.jpg" alt="" srcset="">
+        </section> -->
         <!-- <footer class="main-footer">
             <div class="footer-container">
                 <div class="footer-logo">Blogin.</div>

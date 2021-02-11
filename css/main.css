@@ -54,6 +54,14 @@ body{
     display: none;
 }
 
+.saved-memes-gallery{
+    background-color: black;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+    gap: 10px 10px;
+    display: none;
+}
+
 .main-footer{
     grid-column: 1/1;
     grid-row: 3/3;
@@ -134,4 +142,11 @@ body{
     grid-template-rows: 50px 1fr 150px;
 }
 
+
+/* ---SAVED MEMES--- */
+
+/* .saved-memes-gallery img {
+    width: 100%;
+    cursor: pointer;
+} */
 
