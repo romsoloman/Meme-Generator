@@ -18,6 +18,7 @@ const openEditor = () => {
     const elMainContent = document.querySelector('.main-content');
     const elEditor = document.querySelector('.meme-editor-container');
     document.body.classList.remove('menu-open');
+    document.body.classList.remove('dark');
     // const elMemesGallery = document.querySelector('.saved-memes-gallery');
     elMainContent.style.display = 'none';
     // elMemesGallery.style.display = 'none';
