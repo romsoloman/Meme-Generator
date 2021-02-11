@@ -14,7 +14,7 @@
     <div class="grid-site-container">
         <header class="main-header">
             <div class="header-container">
-                <div class="logo">Memegen</div>
+                <div class="logo"><a href="#" onclick="openGallery()">Memegen</a></div>
                 <nav class="main-nav">
                     <ul class="nav-links">
                         <li class="link"><a href="#" onclick="openGallery()">Gallery</a></li>
@@ -28,12 +28,9 @@
             <header class="search-header">
                 <div class="search-input">
                     <input type="list" placeholder="SEARCH" name="search-input" onkeyup="onFilterImgs(event)">
+                    <i class="fas fa-search"></i>
                 </div>
                 <div class="search-keywords">
-                    <span>fuuny</span>
-                    <span>fuuny</span>
-                    <span>fuuny</span>
-                    <span>fuuny</span>
                     <span>fuuny</span>
                 </div>
             </header>
@@ -48,15 +45,33 @@
                 <input type="text" name="text-editor" class="text-editor" placeholder="Text Line"
                     onkeyup="handleText(event)">
                 <div class="control-box">
-                    <button class="line-up" name="up" onclick="onSwitchLine(this.name)">↑</button>
-                    <button class="line-down" name="down" onclick="onSwitchLine(this.name)">↓</button>
-                    <button class="add-line" onclick="onAddLine()">+</button>
-                    <button class="delete-line" onclick="onDeleteLine()">X</button>
-                    <button class="font-size-up" name="up" onclick="onChangeFontSize(this.name)">A+</button>
-                    <button class="font-size-down" name="down" onclick="onChangeFontSize(this.name)">A-</button>
-                    <button class="text-align-left" name="left" onclick="onChangeAlign(this.name)">left</button>
-                    <button class="text-align-center" name="center" onclick="onChangeAlign(this.name)">center</button>
-                    <button class="text-align-right" name="right" onclick="onChangeAlign(this.name)">right</button>
+                    <button class="line-up" name="up" onclick="onSwitchLine(this.name)">
+                        <i class="fas fa-arrow-up"></i>
+                    </button>
+                    <button class="add-line" onclick="onAddLine()">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button class="line-down" name="down" onclick="onSwitchLine(this.name)">
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button class="delete-line" onclick="onDeleteLine()">
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                    <button class="font-size-up" name="up" onclick="onChangeFontSize(this.name)">
+                        <i class="fas fa-text-size">+</i>
+                    </button>
+                    <button class="font-size-down" name="down" onclick="onChangeFontSize(this.name)">
+                        <i class="fas fa-text-size">-</i>
+                    </button>
+                    <button class="text-align-left" name="left" onclick="onChangeAlign(this.name)">
+                        <i class="fas fa-align-left"></i>
+                    </button>
+                    <button class="text-align-center" name="center" onclick="onChangeAlign(this.name)">
+                        <i class="fas fa-align-center"></i>
+                    </button>
+                    <button class="text-align-right" name="right" onclick="onChangeAlign(this.name)">
+                        <i class="fas fa-align-right"></i>
+                    </button>
                     <select name="fonts" onchange="onSetFont(this.value)">
                         <option value="impact">Impact</option>
                         <option value="ariel">Ariel</option>
@@ -73,18 +88,34 @@
         <!-- <section class="saved-memes-gallery">
             <img src="img/1.jpg" alt="" srcset="">
         </section> -->
-        <!-- <footer class="main-footer">
+        <footer class="main-footer">
             <div class="footer-container">
-                <div class="footer-logo">Blogin.</div>
-                <small>© 2014 Blogin.com - All Rights Reserved - Find more free Te</small>
-                <ul class="footer-nav clean-list flex space-between align-center">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                <div class="footer-logo">Memegen.</div>
+                <small>© 2021 Memegen.com - All Rights Reserved - Find more details in our social media pages.</small>
+                <ul class="footer-nav">
+                    <li>
+                        <a href="https://www.facebook.com/romsmes11" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/twitter" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/romsolomann/" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
-        </footer> -->
+        </footer>
     </div>
     <script src="js/meme-utils.js"></script>
     <script src="js/meme-storage.js"></script>

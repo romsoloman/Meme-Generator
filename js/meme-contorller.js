@@ -17,9 +17,9 @@ const onImgClicked = imgId => {
 const openEditor = () => {
     const elMainContent = document.querySelector('.main-content');
     const elEditor = document.querySelector('.meme-editor-container');
-    const elMemesGallery = document.querySelector('.saved-memes-gallery');
+    // const elMemesGallery = document.querySelector('.saved-memes-gallery');
     elMainContent.style.display = 'none';
-    elMemesGallery.style.display = 'none';
+    // elMemesGallery.style.display = 'none';
     elEditor.style.display = 'grid';
 }
 
@@ -137,6 +137,8 @@ const onFilterImgs = (ev) => {
     gFilteredImgs = filterImgs(ev.target.value)
     renderGallery(true)
 }
+
+
 
 // const openSavedMemes = () => {
 //     const elMainContent = document.querySelector('.main-content');

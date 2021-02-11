@@ -15,10 +15,11 @@ body{
 
 /* ---LAYOUT--- */
 .grid-site-container{
+    /* background-color: #e9eef3; */
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 100px auto 100px;
+    grid-template-rows: 100px auto 150px;
 }
 
 .main-header{
@@ -31,57 +32,58 @@ body{
 }
 
 .main-content{
-    min-width: 860px;
+    width: 70%;
     display: grid;
     justify-self: center;
     grid-template-rows: 10% 90%;
     grid-column: 1/1;
     grid-row: 2/2;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
     /* display: none; */
 }
 
 .meme-editor-container{
-    background-color: lightgray;
-    min-width: 860px;
+    width: 70%;
     justify-self: center;
     display: grid;
     grid-template-columns: 50% 50%;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
     padding: 20px 0;
     display: none;
 }
 
-.saved-memes-gallery{
+/* .saved-memes-gallery{
     background-color: black;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
     gap: 10px 10px;
     display: none;
-}
+} */
 
 .main-footer{
+    background-color: #353535;
     grid-column: 1/1;
     grid-row: 3/3;
+    color: lightgray;
 }
 
 /* ---HEADER--- */
 
 .header-container{
-    min-width: 860px;
+    width: 70%;
     height: 100%;
     display: grid;
     grid-template-columns: 30% 70%;
     align-items: center;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
 }
 
-.logo{
+.logo a{
     font-size: 1.8rem;
     color: #dcd7d7;
+    text-decoration: none;
+    transition: color .7s ease-out;
+}
+
+.logo a:hover {
+    color: white;
 }
 
 .main-nav{
@@ -98,12 +100,16 @@ body{
 
 .link a {
     text-decoration: none;
-    color: grey;
+    color: rgb(157, 157, 157);
     transition: color .7s ease-out;
 }
 
 .link a:hover{
     color: ghostwhite;
+}
+
+.link a:focus {
+    color: white;
 }
 /* ----GALLERY---- */
 
@@ -114,21 +120,45 @@ body{
     align-items: center;
 }
 
+.search-input {
+    position: relative;
+}
+.search-input input{
+    width: 75%;
+    border: none;
+    background-color: #ffffff;
+    border-bottom: 1.5px solid rgb(36, 36, 36);
+    font-size: 0.7rem;
+}
+
+.search-input input:focus {
+    outline: none;
+}
+
 .search-keywords{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.search-input i{
+    position: absolute;
+    top: 0;
+    right: 25%;
+}
+
 .gallery-container{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
-    gap: 10px 10px;
+    grid-template-columns: repeat(auto-fill, minmax(130px,1fr));
+    grid-auto-flow: dense;
+    gap: 19px 5px;
+    padding-bottom: 50px;
 }
 
 .gallery-container img {
     width: 100%;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 /* ---CANVAS--- */
@@ -142,6 +172,107 @@ body{
     grid-template-rows: 50px 1fr 150px;
 }
 
+.editor-container .text-editor{
+    font-size: 1rem;
+    transition: outline .7s;
+}
+
+.editor-container .text-editor:focus {
+    outline: rgb(38, 38, 38);
+}
+
+.control-box{
+    margin: 5% auto;
+    width: 50%;
+    display: grid;
+    grid-template-rows: repeat(5,1fr);
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+}
+.control-box button {
+    border-radius: 10px;
+    border: 1px solid lightslategray;
+    background-color: rgb(242, 234, 234);
+    cursor: pointer;
+    transition: background-color .7s;
+}
+
+.control-box button:hover,.control-box select:hover{
+    background-color:rgb(41, 41, 41) ;
+    color: whitesmoke;
+}
+
+.control-box .delete-line {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.control-box .font-size-up{
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+.control-box .font-size-down{
+    grid-column: 3/4;
+    grid-row: 3/4;
+}
+.control-box .text-align-left{
+    grid-column: 1/2;
+    grid-row: 4/5;
+}
+.control-box .text-align-right{
+    grid-column: 3/4;
+    grid-row: 4/5;
+}
+.control-box .text-align-center{
+    grid-column: 2/3;
+    grid-row: 4/5;
+}
+.control-box .font-color{
+	border: none;
+    height: 100%;
+    grid-column: 1/2;
+    grid-row: 5/6;
+    cursor: pointer;
+}
+.control-box .font-color:focus{outline: none;}
+
+.control-box select{
+    cursor: pointer;
+    background-color: rgb(242, 234, 234);
+    grid-column: 3/4;
+    grid-row: 5/6;
+    transition: background-color .7s;
+    text-transform: uppercase;
+}
+
+.share-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.share-container button {
+    width: 40%;
+    height: 20%;
+    border: 1px solid lightslategray;
+    cursor: pointer;
+    transition: background-color .7s;
+    border-radius: 5px;
+}
+.share-container .save-btn{
+    background-color: rgb(116, 118, 112);
+    color: beige;
+}
+.share-container .save-btn:hover{background-color: rgb(23, 22, 22);}
+
+.share-container .share-btn{
+    background-color: rgb(147, 171, 222);
+    color: beige;
+}
+.share-container .share-btn:hover{background-color: rgb(35, 43, 91);}
+
 
 /* ---SAVED MEMES--- */
 
@@ -150,3 +281,65 @@ body{
     cursor: pointer;
 } */
 
+/* ---FOOTER--- */
+
+.footer-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    margin: 20px auto;
+}
+
+.footer-container small {
+    margin: 10px 0;
+}
+
+.footer-nav{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.footer-nav li >* {
+    color: lightgray;
+}
+
+@media screen and (max-width:1150px){
+   .gallery-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px,1fr));
+    grid-auto-flow: dense;
+    gap: 19px 5px;
+    padding-bottom: 50px;
+   }
+}
+
+@media screen and (max-width:742px){
+    .gallery-container{
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(80px,1fr));
+     grid-auto-flow: dense;
+     gap: 19px 5px;
+     padding-bottom: 50px;
+    }
+ }
+
+ @media screen and (max-width:680px){
+     html{
+         font-size: 12px;
+     }
+     .grid-site-container{
+       grid-template-rows: 100px 1fr 150px;
+     }
+    .gallery-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(80px,1fr));
+        grid-auto-flow: dense;
+        gap: 19px 5px;
+        padding-bottom: 50px;
+       }
+ }
