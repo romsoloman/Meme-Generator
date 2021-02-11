@@ -58,6 +58,7 @@ const renderImg = (imgId) => {
 
 const handleText = ev => {
     if (ev.keyCode === 13) return ev.target.value = '';
+    if (gCurrMeme.selectedLineIdx === -1) gCurrMeme.selectedLineIdx = 0;
     let currMeme = getCurrMeme();
     currMeme.lines[currMeme.selectedLineIdx].txt = ev.target.value
     currMeme = getCurrMeme();
@@ -103,8 +104,7 @@ const onChangeFontColor = fontColor => {
 
 const onDeleteLine = () => {
     let currMeme = getCurrMeme();
-    deleteSelectedLine(currMeme.selectedLineIdx);
-    currMeme = getCurrMeme();
+    deleteSelectedLine(currMeme.selectedLineIdx, currMeme.selectedImgId);
     resetInputs();
     renderImg(currMeme.selectedImgId);
 }
@@ -117,6 +117,8 @@ const resetInputs = () => {
 }
 
 const onSwitchLine = direction => {
+    let currMeme = getCurrMeme();
+    if (currMeme.selectedLineIdx > currMeme.lines.length) return;
     switchLine(direction);
 }
 

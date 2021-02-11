@@ -1,5 +1,5 @@
 'use strict'
-
+const STORAGE_KEY = 'SavedMemes';
 const gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: ['trump'] },
     { id: 2, url: 'img/2.jpg', keywords: ['trump'] },
@@ -54,8 +54,13 @@ const updateCurrMeme = (imgId, lineIdx = 1, txt, size = 36, font = 'Impact', ali
 }
 
 
-const deleteSelectedLine = () => {
-    updateCurrMeme(gCurrMeme.selectedImgId)
+const deleteSelectedLine = (selectedLineIdx, imgId) => {
+    gCurrMeme.lines.splice(selectedLineIdx, 1);
+    gCurrMeme.selectedLineIdx--;
+    if (gCurrMeme.selectedLineIdx === -1 && !gCurrMeme.lines.length) {
+        updateCurrMeme(imgId)
+        gCurrMeme.selectedLineIdx = 0;
+    }
 }
 
 
@@ -66,15 +71,13 @@ const switchLine = direction => {
         console.log('gCurrMeme.selectedLineIdx', gCurrMeme.selectedLineIdx);
     }
     else {
-        if (gCurrMeme.selectedLineIdx === gCurrMeme.lines.length) return;
         gCurrMeme.selectedLineIdx++
-        console.log('gCurrMeme.selectedLineIdx', gCurrMeme.selectedLineIdx);
+        if (gCurrMeme.selectedLineIdx === gCurrMeme.lines.length) gCurrMeme.selectedLineIdx = gCurrMeme.lines.length - 1;
     }
 }
 
 const addLine = (txt, size = 36, font = 'Impact', align = 'center', color = 'white') => {
-    gCurrMeme.lines.push({
-        txt, size, font, align, color, x: 200, y: 50 * gCurrMeme.lines.length
-    })
-    gCurrMeme.selectedLineIdx = gCurrMeme.lines.length - 1;
+
+    gCurrMeme.lines.splice(gCurrMeme.selectedLineIdx + 1, 0, { txt, size, font, align, color, x: 200, y: 50 * gCurrMeme.lines.length })
+    gCurrMeme.selectedLineIdx++;
 }
