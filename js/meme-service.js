@@ -22,8 +22,8 @@ const gImgs = [
 ];
 var gFilteredImgs;
 var gCurrMeme;
-
 // var gMemes = [];
+
 // const getSavedMemes = () => {
 //     return gMemes;
 // }
@@ -96,12 +96,11 @@ const filterImgs = value => {
     return result;
 }
 
-// const saveMeme = () => {
-//     gMemes.push(gCurrMeme)
-//     _saveMemesToStorage();
-//     console.log('gMemes', gMemes);
+// const saveMeme = elCanvasData => {
+//     gMemes.push(elCanvasData)
+//     _saveMemesToStorage(elCanvasData);
 // }
 
-// const _saveMemesToStorage = () => {
-//     saveToStorage(STORAGE_KEY, gCurrMeme);
+// const _saveMemesToStorage = elCanvasData => {
+//     saveToStorage(STORAGE_KEY, elCanvasData);
 // }

@@ -19,9 +19,9 @@ const openEditor = () => {
     const elEditor = document.querySelector('.meme-editor-container');
     document.body.classList.remove('menu-open');
     document.body.classList.remove('dark');
-    // const elMemesGallery = document.querySelector('.saved-memes-gallery');
+    const elMemesGallery = document.querySelector('.saved-memes-gallery');
     elMainContent.style.display = 'none';
-    // elMemesGallery.style.display = 'none';
+    elMemesGallery.style.display = 'none';
     elEditor.style.display = 'grid';
 }
 
@@ -29,6 +29,7 @@ const openGallery = () => {
     const elMainContent = document.querySelector('.main-content');
     const elEditor = document.querySelector('.meme-editor-container');
     document.body.classList.remove('menu-open')
+    document.body.classList.remove('dark');
     elEditor.style.display = 'none';
     elMainContent.style.display = 'grid';
 }
@@ -133,7 +134,7 @@ const onAddLine = () => {
 }
 
 const onSaveMeme = () => {
-    saveMeme();
+    saveMeme(gElCanvas.toDataURL());
 }
 
 const onFilterImgs = (ev) => {
@@ -146,6 +147,40 @@ const toggleMenu = () => {
     document.body.classList.toggle('dark');
 }
 
+// function onImgInput(ev) {
+//     loadImageFromInput(ev, renderImg)
+// }
+
+// function loadImageFromInput(ev, onImageReady) {
+//     document.querySelector('.share-container').innerHTML = ''
+//     var reader = new FileReader()
+
+//     reader.onload = function (event) {
+//         var img = new Image()
+//         img.onload = onImageReady.bind(null, img)
+//         img.src = event.target.result
+//         gImg = img
+//     }
+//     reader.readAsDataURL(ev.target.files[0])
+// }
+
+function uploadImg(elForm, ev) {
+    ev.preventDefault();
+    document.getElementById('imgData').value = gElCanvas.toDataURL("image/jpeg");
+
+    // A function to be called if request succeeds
+    function onSuccess(uploadedImgUrl) {
+        uploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        console.log('uploadedImgUrl:', uploadedImgUrl)
+        document.querySelector('.share-container').innerHTML = `
+        <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+           Share on Facebook
+        </a>`
+    }
+
+    doUploadImg(elForm, onSuccess);
+}
+
 // const openSavedMemes = () => {
 //     const elMainContent = document.querySelector('.main-content');
 //     const elMemesGallery = document.querySelector('.saved-memes-gallery');
@@ -153,15 +188,7 @@ const toggleMenu = () => {
 //     elMemesGallery.style.display = 'grid';
 //     elMainContent.style.display = 'none'
 //     elEditor.style.display = 'none';
-//      renderMemes()
+//     // renderMeme();
 // }
 
-// const renderMemes = () => {
-//     const memes = getSavedMemes();
-//     console.log('memes', memes);
-//     const strHTMLs = memes.map(img => {
-//         return `<img src="img/${img.id}.jpg">`
-//     }).join(' ');
-//     const elMemesGallery = document.querySelector('.saved-memes-gallery');
-//     elMemesGallery.innerHTML = strHTMLs;
-// }
+

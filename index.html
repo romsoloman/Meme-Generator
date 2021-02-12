@@ -81,15 +81,17 @@
                     <input type="color" name="font-color" class="font-color" value="#000000"
                         onblur="onChangeFontColor(this.value)">
                 </div>
-                <div class="share-container">
+                <form class="share-container" action="" method="POST" enctype="multipart/form-data"
+                    onsubmit="uploadImg(this, event)">
+                    <input name="img" id="imgData" type="hidden" />
                     <button class="save-btn" onclick="onSaveMeme()">Save Meme</button>
-                    <button class="share-btn">Share Meme </button>
-                </div>
+                    <button class="share-btn" type="submit">Share Meme </button>
+                </form>
             </div>
         </section>
-        <!-- <section class="saved-memes-gallery">
-            <img src="img/1.jpg" alt="" srcset="">
-        </section> -->
+        <section class="saved-memes-gallery">
+            <!-- <img src="img/1.jpg" alt="" srcset=""> -->
+        </section>
         <footer class="main-footer">
             <div class="footer-container">
                 <div class="footer-logo">Memegen.</div>

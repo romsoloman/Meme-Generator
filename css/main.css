@@ -16,7 +16,6 @@ body{
 
 /* ---LAYOUT--- */
 .grid-site-container{
-    /* background-color: #e9eef3; */
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
@@ -51,13 +50,12 @@ body{
     display: none;
 }
 
-/* .saved-memes-gallery{
-    background-color: black;
+.saved-memes-gallery{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
     gap: 10px 10px;
     display: none;
-} */
+}
 
 .main-footer{
     background-color: #353535;
@@ -283,13 +281,26 @@ body{
 }
 .share-container .share-btn:hover{background-color: rgb(35, 43, 91);}
 
-
+a.btn {
+    width: 40%;
+    height: 20%;
+    border: 1px solid lightslategray;
+    cursor: pointer;
+    transition: background-color .7s;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    color: beige;
+    background-color: rgb(147, 171, 222);
+    line-height: 25px;
+    font-size: 0.7rem;
+}
 /* ---SAVED MEMES--- */
 
-/* .saved-memes-gallery img {
+.saved-memes-gallery img {
     width: 100%;
     cursor: pointer;
-} */
+}
 
 /* ---FOOTER--- */
 
