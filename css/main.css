@@ -260,7 +260,7 @@ body{
     margin: 0 auto;
 }
 
-.share-container button {
+.share-container button{
     width: 40%;
     height: 20%;
     border: 1px solid lightslategray;
@@ -280,7 +280,7 @@ body{
 }
 .share-container .share-btn:hover{background-color: rgb(35, 43, 91);}
 
-a.btn {
+a.btn{
     width: 40%;
     height: 20%;
     border: 1px solid lightslategray;
@@ -294,6 +294,25 @@ a.btn {
     line-height: 25px;
     font-size: 0.7rem;
 }
+
+.download-btn{
+    width: 40%;
+    height: 20%;
+    border: 1px solid lightslategray;
+    cursor: pointer;
+    transition: background-color .7s;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    color: beige;
+    line-height: 25px;
+    font-size: 0.7rem;
+    background-color: rgb(67, 181, 132);
+    color: beige;
+    transition: background-color .7s;
+}
+
+.download-btn:hover{background-color: rgb(10, 97, 59);}
 /* ---SAVED MEMES--- */
 
 .saved-memes-gallery img {

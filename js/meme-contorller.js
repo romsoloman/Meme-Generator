@@ -200,6 +200,11 @@ const onKeywordClick = elKeyword => {
     setTimeout(renderGallery, 1000, true)
 
 }
+
+const downloadImg = elLink => {
+    var imgContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
+}
 // const openSavedMemes = () => {
 //     const elMainContent = document.querySelector('.main-content');
 //     const elMemesGallery = document.querySelector('.saved-memes-gallery');
