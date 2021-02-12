@@ -22,7 +22,12 @@ const gImgs = [
 ];
 var gFilteredImgs;
 var gCurrMeme;
+var gKeywords = ['funny', 'actor', 'movie', 'president', 'sleepy', 'pets', 'baby', 'listen', 'kiss', 'shock', 'putin', 'obama', 'trump'];
 // var gMemes = [];
+
+const getKeywords = () => {
+    return gKeywords;
+}
 
 // const getSavedMemes = () => {
 //     return gMemes;

@@ -2,6 +2,7 @@
 
 let gElCanvas;
 let gCtx;
+var gKeywordClickedCount = 12;
 
 const init = () => {
     renderGallery(false);
@@ -41,6 +42,7 @@ const renderGallery = bool => {
     }).join(' ');
     const elGallery = document.querySelector('.gallery-container');
     elGallery.innerHTML = strHTMLs;
+    renderKeywords();
 }
 
 const renderCanvas = () => {
@@ -181,6 +183,23 @@ function uploadImg(elForm, ev) {
     doUploadImg(elForm, onSuccess);
 }
 
+
+const renderKeywords = () => {
+    let keywords = getKeywords();
+    const strHTMLs = keywords.map(keyword => {
+        return `<span onclick="onKeywordClick(this)">${keyword}</span>`
+    }).join(' ');
+    const elKeywords = document.querySelector('.search-keywords');
+    elKeywords.innerHTML = strHTMLs;
+}
+
+const onKeywordClick = elKeyword => {
+    gKeywordClickedCount += 5;
+    elKeyword.style.fontSize = `${gKeywordClickedCount}px`;
+    gFilteredImgs = filterImgs(elKeyword.innerText);
+    setTimeout(renderGallery, 1000, true)
+
+}
 // const openSavedMemes = () => {
 //     const elMainContent = document.querySelector('.main-content');
 //     const elMemesGallery = document.querySelector('.saved-memes-gallery');

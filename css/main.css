@@ -143,10 +143,9 @@ body{
     outline: none;
 }
 
-.search-keywords{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.search-keywords span{
+    cursor: pointer;
+    font-size: 12px;
 }
 
 .search-input i{
