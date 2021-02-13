@@ -22,7 +22,7 @@ const gImgs = [
 ];
 var gFilteredImgs;
 var gCurrMeme;
-var gKeywords = ['funny', 'actor', 'movie', 'president', 'sleepy', 'pets', 'baby', 'listen', 'kiss', 'shock', 'putin', 'obama', 'trump'];
+var gKeywords = ['all', 'funny', 'actor', 'movie', 'president', 'sleepy', 'pets', 'baby', 'listen', 'kiss', 'shock', 'putin', 'obama', 'trump'];
 // var gMemes = [];
 
 const getKeywords = () => {
@@ -45,16 +45,6 @@ const getCurrImgById = imgId => {
     return gImgs.find(img => {
         return img.id === imgId;
     })
-}
-
-const drawText = (text = '', x = 200, y = 50, size, color, font, align) => {
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = color
-    gCtx.font = `${size}px ${font}`
-    gCtx.textAlign = align;
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
 }
 
 const updateCurrMeme = (imgId, lineIdx = 1, txt, size = 36, font = 'Impact', align = 'center', color = 'white') => {
