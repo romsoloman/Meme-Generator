@@ -77,7 +77,7 @@ const switchLine = direction => {
 
 const addLine = (txt, size = 36, font = 'Impact', align = 'center', color = 'white') => {
 
-    gCurrMeme.lines.splice(gCurrMeme.selectedLineIdx + 1, 0, { txt, size, font, align, color, x: 200, y: 50 * gCurrMeme.lines.length })
+    gCurrMeme.lines.splice(gCurrMeme.selectedLineIdx + 1, 0, { txt, size, font, align, color, x: 200, y: 50 * gCurrMeme.lines.length + 10 })
     gCurrMeme.selectedLineIdx++;
 }
 

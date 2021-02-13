@@ -90,8 +90,8 @@ body{
     transition: color .7s ease-out;
 }
 
-.logo a:hover {
-    color: white;
+.logo a img {
+    width: 100px;
 }
 
 .main-nav{
@@ -329,6 +329,10 @@ a.btn{
     align-items: center;
     width: 70%;
     margin: 20px auto;
+}
+
+.footer-logo img {
+    width: 100px;
 }
 
 .footer-container small {

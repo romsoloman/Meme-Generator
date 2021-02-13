@@ -59,7 +59,7 @@ const renderImg = (imgId) => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         currMeme.lines.forEach(line => {
             drawText(line.txt, line.x, line.y, line.size, line.color, line.font, line.align);
-            drawRect(line.x, line.y);
+            drawRect(line.x, line.y)
         });
     }
 }
