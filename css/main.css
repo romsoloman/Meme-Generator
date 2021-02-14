@@ -177,6 +177,8 @@ body{
 .editor-container{
     display: grid;
     grid-template-rows: 50px 1fr 150px;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .editor-container .text-editor{
@@ -359,6 +361,10 @@ a.btn{
     gap: 19px 5px;
     padding-bottom: 50px;
    }
+
+   #my-canvas {
+       width: 350px;
+   }
 }
 
 @media screen and (max-width:742px){
@@ -375,6 +381,9 @@ a.btn{
      html{
          font-size: 12px;
      }
+     #my-canvas {
+        width: 480px;
+    }
      .grid-site-container{
        grid-template-rows: 100px 1fr 150px;
      }
