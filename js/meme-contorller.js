@@ -29,9 +29,11 @@ const openEditor = () => {
 const openGallery = () => {
     const elMainContent = document.querySelector('.main-content');
     const elEditor = document.querySelector('.meme-editor-container');
+    const elMemesGallery = document.querySelector('.saved-memes-gallery');
     document.body.classList.remove('menu-open')
     document.body.classList.remove('dark');
     elEditor.style.display = 'none';
+    elMemesGallery.style.display = 'none'
     elMainContent.style.display = 'grid';
 }
 
@@ -223,7 +225,13 @@ const openSavedMemes = () => {
 
 const onSaveMeme = () => {
     saveMeme(gElCanvas.toDataURL());
-    console.log('saved');
+    openSavedModal();
+    document.body.classList.add('dark')
+    setTimeout(() => {
+        const elMSavedModal = document.querySelector('.saved-modal');
+        elMSavedModal.hidden = true;
+        document.body.classList.remove('dark')
+    }, 1700)
 }
 
 const renderMemes = () => {
@@ -235,4 +243,29 @@ const renderMemes = () => {
     elMemesGallery.innerHTML = strHTMLs;
 }
 
+function onImgInput(ev) {
+    loadImageFromInput(ev, renderUploadImg, _makeId);
+    updateCurrMeme(_makeId)
+    openEditor();
+}
 
+function loadImageFromInput(ev, onImageReady, imgId) {
+    var reader = new FileReader()
+
+    reader.onload = function (event) {
+        var img = new Image()
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result
+        gImgs.push({ id: imgId, url: img.src })
+    }
+    reader.readAsDataURL(ev.target.files[0])
+}
+
+const renderUploadImg = (img) => {
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+}
+
+const openSavedModal = () => {
+    const elMSavedModal = document.querySelector('.saved-modal');
+    elMSavedModal.hidden = false;
+}

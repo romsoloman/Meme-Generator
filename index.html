@@ -30,6 +30,7 @@
             <header class="search-header">
                 <div class="search-input">
                     <input type="list" placeholder="SEARCH" name="search-input" onkeyup="onFilterImgs(event)">
+                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
                     <i class="fas fa-search"></i>
                 </div>
                 <div class="search-keywords">
@@ -84,6 +85,7 @@
                     onsubmit="uploadImg(this, event)">
                     <input name="img" id="imgData" type="hidden" />
                     <a href="#" class="save-btn" onclick="onSaveMeme()">Save Meme</a>
+                    <div class="saved-modal" hidden>Saved to Memes..</div>
                     <button class="share-btn" type="submit">Share Meme </button>
                     <a href="#" class="download-btn" onclick="downloadImg(this)" download="my-img.jpg">Download jpeg</a>
                 </form>

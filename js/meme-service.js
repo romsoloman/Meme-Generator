@@ -23,14 +23,14 @@ const gImgs = [
 var gFilteredImgs;
 var gCurrMeme;
 var gKeywords = ['all', 'funny', 'actor', 'movie', 'president', 'sleepy', 'pets', 'baby', 'listen', 'kiss', 'shock', 'putin', 'obama', 'trump'];
-var gMemes = [];
+var gSavedMemes = [];
 
 const getKeywords = () => {
     return gKeywords;
 }
 
 const getSavedMemes = () => {
-    return gMemes;
+    return gSavedMemes;
 }
 
 const getCurrMeme = () => {
@@ -92,10 +92,10 @@ const filterImgs = value => {
 }
 
 const saveMeme = elCanvasData => {
-    gMemes.push({ imgUrl: elCanvasData })
+    gSavedMemes.push({ imgUrl: elCanvasData })
     _saveMemesToStorage({ imgUrl: elCanvasData });
 }
 
 const _saveMemesToStorage = () => {
-    saveToStorage(STORAGE_KEY, gMemes);
+    saveToStorage(STORAGE_KEY, gSavedMemes);
 }
