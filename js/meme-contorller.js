@@ -18,11 +18,11 @@ const onImgClicked = imgId => {
 const openEditor = () => {
     const elMainContent = document.querySelector('.main-content');
     const elEditor = document.querySelector('.meme-editor-container');
+    const elMemesGallery = document.querySelector('.saved-memes-gallery');
     document.body.classList.remove('menu-open');
     document.body.classList.remove('dark');
-    // const elMemesGallery = document.querySelector('.saved-memes-gallery');
     elMainContent.style.display = 'none';
-    // elMemesGallery.style.display = 'none';
+    elMemesGallery.style.display = 'none';
     elEditor.style.display = 'grid';
 }
 
@@ -59,7 +59,7 @@ const renderImg = (imgId) => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         currMeme.lines.forEach(line => {
             drawText(line.txt, line.x, line.y, line.size, line.color, line.font, line.align);
-            drawRect(line.x, line.y)
+            // drawRect(line.x, line.y)
         });
     }
 }
@@ -136,10 +136,6 @@ const onAddLine = () => {
     resetInputs();
 }
 
-const onSaveMeme = () => {
-    saveMeme(gElCanvas.toDataURL());
-}
-
 const onFilterImgs = (ev) => {
     gFilteredImgs = filterImgs(ev.target.value)
     renderGallery(true)
@@ -196,12 +192,12 @@ const downloadImg = elLink => {
     elLink.href = imgContent
 }
 
-const drawRect = (x, y) => {
-    gCtx.beginPath()
-    gCtx.rect(gElCanvas.width / 4, y - 35, x, 50)
-    gCtx.strokeStyle = 'lightgray'
-    gCtx.stroke()
-}
+// const drawRect = (x, y) => {
+//     gCtx.beginPath()
+//     gCtx.rect(gElCanvas.width / 4, y - 35, x, 50)
+//     gCtx.strokeStyle = 'lightgray'
+//     gCtx.stroke()
+// }
 
 const drawText = (text = '', x = 200, y = 50, size, color, font, align) => {
     gCtx.lineWidth = 2
@@ -213,14 +209,30 @@ const drawText = (text = '', x = 200, y = 50, size, color, font, align) => {
     gCtx.strokeText(text, x, y)
 }
 
-// const openSavedMemes = () => {
-//     const elMainContent = document.querySelector('.main-content');
-//     const elMemesGallery = document.querySelector('.saved-memes-gallery');
-//     const elEditor = document.querySelector('.meme-editor-container');
-//     elMemesGallery.style.display = 'grid';
-//     elMainContent.style.display = 'none'
-//     elEditor.style.display = 'none';
-//     // renderMeme();
-// }
+const openSavedMemes = () => {
+    const elMainContent = document.querySelector('.main-content');
+    const elMemesGallery = document.querySelector('.saved-memes-gallery');
+    const elEditor = document.querySelector('.meme-editor-container');
+    document.body.classList.remove('menu-open');
+    document.body.classList.remove('dark');
+    elMemesGallery.style.display = 'grid';
+    elMainContent.style.display = 'none'
+    elEditor.style.display = 'none';
+    setTimeout(renderMemes, 50)
+}
+
+const onSaveMeme = () => {
+    saveMeme(gElCanvas.toDataURL());
+    console.log('saved');
+}
+
+const renderMemes = () => {
+    const savedMemes = loadFromStorage(STORAGE_KEY);
+    let strHTMLs = savedMemes.map(meme => {
+        return `<img src="${meme.imgUrl}" />`
+    }).join(' ');
+    const elMemesGallery = document.querySelector('.saved-memes-gallery');
+    elMemesGallery.innerHTML = strHTMLs;
+}
 
 
